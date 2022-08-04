@@ -1,0 +1,56 @@
+msgid "File Browser"
+msgstr "文件浏览器"
+
+msgid "File explorer is software that creates your own cloud that you can install on a server, point it to a path, and then access your files through a beautiful web interface. You have many features available!"
+msgstr "文件浏览器是一种创建你自己的云的软件，你可以在服务器上安装它，将它指向一个路径，然后通过一个漂亮的web界面访问你的文件。您有许多可用的特性！"
+
+msgid "Settings"
+msgstr "设置"
+
+msgid "Log"
+msgstr "日志"
+
+msgid "RUNNING"
+msgstr "运行中"
+
+msgid "NOT RUNNING"
+msgstr "未运行"
+
+msgid "Enter interface"
+msgstr "进入界面"
+
+msgid "Enable"
+msgstr "启用"
+
+msgid "Listen address"
+msgstr "监听地址"
+
+msgid "Listen port"
+msgstr "监听端口"
+
+msgid "Initial username"
+msgstr "初始账户"
+
+msgid "Initial password"
+msgstr "初始密码"
+
+msgid "SSL cert"
+msgstr "SSL 证书"
+
+msgid "SSL key"
+msgstr "SSL 私钥"
+
+msgid "Database path"
+msgstr "数据库路径"
+
+msgid "Root path"
+msgstr "指向路径"
+
+msgid "Point to a path to access your files in the web interface, default is /"
+msgstr "指向一个路径，可在web界面访问你的文件，默认为 /"
+
+msgid "Logs"
+msgstr "日志"
+
+msgid "Clear logs"
+msgstr "清空日志"
