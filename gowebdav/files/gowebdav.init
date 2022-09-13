@@ -23,13 +23,20 @@ get_config() {
 
 set_firewall() {
 	if [ "$set_type" = "allow" ]; then
-		mkdir -p "/var/etc/"
-		iptables -I INPUT -p tcp --dport "$listen_port" -j ACCEPT
-		echo "iptables -I INPUT -p tcp --dport "$listen_port" -j ACCEPT" > "/var/etc/gowebdav.include"
+		uci -q delete firewall.gowebdav
+		uci set firewall.gowebdav=rule
+		uci set firewall.gowebdav.name="gowebdav"
+		uci set firewall.gowebdav.target="ACCEPT"
+		uci set firewall.gowebdav.src="wan"
+		uci set firewall.gowebdav.proto="tcp"
+		uci set firewall.gowebdav.dest_port="$listen_port"
+		uci set firewall.gowebdav.enabled="1"
+		uci commit firewall
+		/etc/init.d/firewall reload >/dev/null 2>&1
 	elif [ "$set_type" = "deny" ]; then
-		mkdir -p "/var/etc/"
-		iptables -D INPUT -p tcp --dport "$listen_port" -j ACCEPT
-		cat /dev/null > "/var/etc/gowebdav.include"
+		uci -q delete firewall.gowebdav
+		uci commit firewall
+		/etc/init.d/firewall reload >/dev/null 2>&1
 	fi
 }
 
@@ -46,7 +53,7 @@ start_service() {
 		listen_addr=$lan_addr
 		set_type="deny"
 	fi
-	set_firewall >/dev/null 2>&1
+	set_firewall
 
 	{ [ -n "$username" ] && [ -n "$password" ]; } && auth_arg="-user $username -password $password"
 	[ "$read_only" -eq "1" ] && readonly_arg="-read-only"
@@ -75,5 +82,5 @@ stop_service() {
 	get_config
 	pgrep -f /usr/bin/gowebdav | xargs kill -9 >/dev/null 2>&1
 	set_type="deny"
-	set_firewall >/dev/null 2>&1
+	set_firewall
 }
