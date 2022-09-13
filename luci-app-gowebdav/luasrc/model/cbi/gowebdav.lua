@@ -21,14 +21,10 @@ o.rmempty = false
 
 o = s:option(Value, "username", translate("Username"))
 o.description = translate("Leave blank to disable auth.")
-o.placeholder = user
-o.default = user
 o.datatype = "string"
 
 o = s:option(Value, "password", translate("Password"))
 o.description = translate("Leave blank to disable auth.")
-o.placeholder = pass
-o.default = pass
 o.datatype = "string"
 o.password = true
 
