@@ -15,6 +15,10 @@ LUCI_TITLE:=LuCI support for FileBrowser
 LUCI_PKGARCH:=all
 LUCI_DEPENDS:=+filebrowser +luci-compat
 
+define Package/$(PKG_NAME)/conffiles
+/etc/filebrowser.db
+endef
+
 include $(TOPDIR)/feeds/luci/luci.mk
 
 # call BuildPackage - OpenWrt buildroot signature
