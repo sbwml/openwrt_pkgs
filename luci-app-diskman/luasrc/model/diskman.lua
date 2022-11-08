@@ -462,7 +462,9 @@ d.get_format_cmd = function()
     hfsplus = { cmd = "mkhfs", option = "-f" },
     ntfs = { cmd = "mkntfs", option = "-f" },
     swap = { cmd = "mkswap", option = "" },
-    btrfs = { cmd = "mkfs.btrfs", option = "-f" }
+    btrfs = { cmd = "mkfs.btrfs", option = "-f" },
+    f2fs = { cmd = "mkfs.f2fs", option = "-f" },
+    xfs = { cmd = "mkfs.xfs", option = "-f" }
   }
   result = {}
   for fmt, obj in pairs(AVAILABLE_FMTS) do
