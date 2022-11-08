@@ -27,6 +27,9 @@ msgstr "QoS"
 msgid "Quality of Service"
 msgstr "IP 限速"
 
+msgid "Not compatible with Software flow offloading."
+msgstr "与软件流量分载不兼容。"
+
 msgid "Upload speed (Mbit/s)"
 msgstr "上传速度 (Mbit/s)"
 
