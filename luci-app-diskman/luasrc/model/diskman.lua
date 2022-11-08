@@ -454,16 +454,17 @@ end
 -- get formart cmd
 d.get_format_cmd = function()
   local AVAILABLE_FMTS = {
+    btrfs = { cmd = "mkfs.btrfs", option = "-f" },
+    exfat = { cmd = "mkfs.exfat", option = "" },
     ext2 = { cmd = "mkfs.ext2", option = "-F -E lazy_itable_init=1" },
     ext3 = { cmd = "mkfs.ext3", option = "-F -E lazy_itable_init=1" },
     ext4 = { cmd = "mkfs.ext4", option = "-F -E lazy_itable_init=1" },
-    fat32 = { cmd = "mkfs.vfat", option = "-F" },
-    exfat = { cmd = "mkexfat", option = "-f" },
-    hfsplus = { cmd = "mkhfs", option = "-f" },
+    f2fs = { cmd = "mkfs.f2fs", option = "-f" },
+    fat32 = { cmd = "mkfs.fat", option = "-F 32" },
+    hfs = { cmd = "mkfs.hfs", option = "-h" },
+    hfsplus = { cmd = "mkfs.hfs", option = "" },
     ntfs = { cmd = "mkntfs", option = "-f" },
     swap = { cmd = "mkswap", option = "" },
-    btrfs = { cmd = "mkfs.btrfs", option = "-f" },
-    f2fs = { cmd = "mkfs.f2fs", option = "-f" },
     xfs = { cmd = "mkfs.xfs", option = "-f" }
   }
   result = {}
