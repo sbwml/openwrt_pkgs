@@ -28,7 +28,7 @@ end
 
 function act_status()
 	local e = {}
-	e.running = luci.sys.call("ps -w | grep -v grep | grep 'filebrowser -a' >/dev/null") == 0
+	e.running = luci.sys.call("pgrep filebrowser >/dev/null") == 0
 	http_write_json(e)
 end
 
