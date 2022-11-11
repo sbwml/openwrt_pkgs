@@ -30,9 +30,6 @@ start_service() {
 	procd_open_instance filebrowser
 	procd_set_param command $PROG
 	procd_append_param command -a $address -p $port -r $root_path -d "$database" --username $username --password $password $ssl_params -l $LOG_PATH
-	echo "procd_append_param command -a $address -p $port -r $root_path -d "$database" --username $username --password $password $ssl_params -l $LOG_PATH"
-	procd_set_param stdout 1
-	procd_set_param stderr 1
 	procd_set_param respawn
 	procd_close_instance filebrowser
 }
