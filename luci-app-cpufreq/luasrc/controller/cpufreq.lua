@@ -1,7 +1,7 @@
 module("luci.controller.cpufreq", package.seeall)
 
 function index()
-	if not nixio.fs.access("/etc/config/cpufreq") then
+	if not nixio.fs.access("/etc/config/cpufreq") or not nixio.fs.access("/etc/config/irqbalance") then
 		return
 	end
 
@@ -10,6 +10,15 @@ function index()
 	page.acl_depends = { "luci-app-cpufreq" }
 
 	entry({"admin", "system", "cpufreq", "cpufreq"}, cbi("cpufreq/cpufreq"), _("CPU Setting"), 1).leaf = true
-	entry({"admin", "system", "cpufreq", "cryptodev"}, cbi("cpufreq/cryptodev"), _("Devcrypto Setting"), 2).leaf = true
+	entry({"admin", "system", "cpufreq", "irqbalance"}, cbi("cpufreq/irqbalance"), _("Irqbalance"), 2).leaf = true
+	entry({"admin", "system", "cpufreq", "cryptodev"}, cbi("cpufreq/cryptodev"), _("Devcrypto Setting"), 3).leaf = true
 
+	entry({"admin", "system", "cpufreq", "irq_status"}, call("irq_status")).leaf = true
+end
+
+function irq_status()
+	local log_data={}
+	log_data.syslog=luci.sys.exec("cat /proc/interrupts |egrep '^[ ][ ]*(CPU|[0-9]*:)'")
+	luci.http.prepare_content("application/json")
+	luci.http.write_json(log_data)
 end

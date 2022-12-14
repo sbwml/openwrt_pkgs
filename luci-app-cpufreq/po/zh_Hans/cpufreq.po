@@ -48,3 +48,30 @@ msgstr "硬件加速"
 
 msgid "encryption test: openssl speed -elapsed -evp aes-128-cbc"
 msgstr "加密测试：openssl speed -elapsed -evp aes-128-cbc"
+
+msgid "Irqbalance"
+msgstr "中断均衡器"
+
+msgid "<b><font color=\"green\">RUNNING</font></b>"
+msgstr "<b><font color=\"red\">运行中</font></b>"
+
+msgid "<b><font color=\"red\">NOT RUNNING</font></b>"
+msgstr "<b><font color=\"red\">未运行</font></b>"
+
+msgid "No data."
+msgstr "没有数据。"
+
+msgid "Read error, please refresh or wait."
+msgstr "读取错误，请刷新或稍等。"
+
+msgid "Irqbalance is a Linux daemon that distributes interrupts over multiple logical CPUs. This design intent being to improve overall performance which can result in a balanced load and power consumption.</br>For more information, visiting: https://openwrt.org/docs/guide-user/services/irqbalance"
+msgstr "Irqbalance 是一个 Linux 守护进程，它在多个逻辑 CPU 上分配中断。此设计旨在提高整体性能，从而实现平衡的负载和功耗。访问 https://openwrt.org/docs/guide-user/services/irqbalance 可获取更多信息。"
+
+msgid "Level at which irqbalance partitions cache domains"
+msgstr "缓存域级别"
+
+msgid "Interval (Seconds)"
+msgstr "间隔（秒）"
+
+msgid "Ignore (ID of irq)"
+msgstr "忽略（中断ID）"
