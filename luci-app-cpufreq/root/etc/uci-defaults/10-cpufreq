@@ -1,5 +1,7 @@
 #!/bin/sh
 
+[ -n $(uci -q get cpufreq.cpufreq.governor0) ] && exit 0
+
 uci_write_config() {
 	uci -q set cpufreq.cpufreq.governor$1="$2"
 	uci -q set cpufreq.cpufreq.minfreq$1="$3"

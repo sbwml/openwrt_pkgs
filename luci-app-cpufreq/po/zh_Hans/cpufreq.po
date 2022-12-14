@@ -4,6 +4,9 @@ msgstr "CPU 性能调节"
 msgid "CPU Freq Settings"
 msgstr "CPU 性能调节设置"
 
+msgid "CPU Setting"
+msgstr "CPU 设置"
+
 msgid "Set CPU Scaling Governor to Max Performance or Balance Mode"
 msgstr "设置路由器的 CPU 性能模式（省电/性能/均衡）"
 
@@ -30,3 +33,18 @@ msgstr "CPU 切换频率触发阈值"
 
 msgid "Kernel make a decision on whether it should increase the frequency (%)"
 msgstr "当 CPU 占用率超过 (%) 的情况下触发内核切换频率"
+
+msgid "Devcrypto Setting"
+msgstr "加密设置"
+
+msgid "Cryptographic Hardware Accelerators"
+msgstr "硬件加解密加速"
+
+msgid "Enable devcrypto engine hardware encryption acceleration support.</br>For more information, visiting: https://openwrt.org/docs/techref/hardware/cryptographic.hardware.accelerators"
+msgstr "开启 devcrypto 引擎硬件加密加速支持，访问 https://openwrt.org/docs/techref/hardware/cryptographic.hardware.accelerators 获取更多信息。"
+
+msgid "Hardware Accelerators"
+msgstr "硬件加速"
+
+msgid "encryption test: openssl speed -elapsed -evp aes-128-cbc"
+msgstr "加密测试：openssl speed -elapsed -evp aes-128-cbc"

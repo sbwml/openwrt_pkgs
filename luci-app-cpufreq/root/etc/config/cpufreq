@@ -1,3 +1,3 @@
 
 config settings 'cpufreq'
-
+	option cryptodev_hw '0'

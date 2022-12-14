@@ -12,6 +12,8 @@ start()
 {
 	config_load "$NAME"
 
+	[ "$(config_get_cpufreq "cryptodev_hw")" -eq 1 ] && ln -sf /etc/ssl/openssl_hw.cnf /etc/ssl/openssl.cnf || ln -sf /etc/ssl/openssl_init.cnf /etc/ssl/openssl.cnf
+
 	for i in $(find /sys/devices/system/cpu/cpufreq/policy* -maxdepth 0 | grep -Eo '[0-9]+')
 	do
 		[ -z "$(config_get_cpufreq "governor$i")" ] && return
