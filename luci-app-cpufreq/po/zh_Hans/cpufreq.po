@@ -53,7 +53,7 @@ msgid "Irqbalance"
 msgstr "中断均衡器"
 
 msgid "<b><font color=\"green\">RUNNING</font></b>"
-msgstr "<b><font color=\"red\">运行中</font></b>"
+msgstr "<b><font color=\"green\">运行中</font></b>"
 
 msgid "<b><font color=\"red\">NOT RUNNING</font></b>"
 msgstr "<b><font color=\"red\">未运行</font></b>"
