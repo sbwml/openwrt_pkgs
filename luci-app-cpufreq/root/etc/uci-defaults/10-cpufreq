@@ -1,6 +1,6 @@
 #!/bin/sh
 
-[ -n $(uci -q get cpufreq.cpufreq.governor0) ] && exit 0
+if [ -z $(uci -q get cpufreq.cpufreq.governor0) ]; then
 
 uci_write_config() {
 	uci -q set cpufreq.cpufreq.governor$1="$2"
@@ -84,6 +84,8 @@ case "$DISTRIB_TARGET" in
 		fi
 		;;
 esac
+
+fi
 
 uci -q batch <<-EOF >/dev/null
 	delete ucitrack.@cpufreq[-1]
