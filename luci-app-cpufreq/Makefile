@@ -11,6 +11,10 @@ PKG_NAME:=luci-app-cpufreq
 PKG_VERSION:=1
 PKG_RELEASE:=$(COMMITCOUNT)
 
+define Package/$(PKG_NAME)/conffiles
+/etc/config/cpufreq
+endef
+
 include $(TOPDIR)/feeds/luci/luci.mk
 
 # call BuildPackage - OpenWrt buildroot signature
