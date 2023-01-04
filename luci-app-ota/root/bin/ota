@@ -24,7 +24,7 @@ download() {
             rm -f /tmp/firmware.img
         fi
     fi
-    curl --fail --show-error --connect-timeout 5 --progress-bar -o /tmp/firmware.img.part "$FW_URL" 2>/tmp/firmware.img.progress &
+    curl -L --fail --show-error --connect-timeout 5 --progress-bar -o /tmp/firmware.img.part "$FW_URL" 2>/tmp/firmware.img.progress &
     echo "$!" > /var/run/ota/download.pid
     if wait $!; then
         rm -f /var/run/ota/download.pid
