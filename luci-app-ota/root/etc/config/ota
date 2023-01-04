@@ -1,0 +1,3 @@
+
+config ota
+	option api_url ''
