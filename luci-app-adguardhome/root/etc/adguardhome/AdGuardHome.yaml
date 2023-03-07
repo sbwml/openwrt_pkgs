@@ -106,7 +106,7 @@ tls:
   private_key_path: ""
 filters:
 - enabled: true
-  url: https://raw.sevencdn.com/hoshsadiq/adblock-nocoin-list/master/nocoin.txt
+  url: https://raw.cooluc.com/hoshsadiq/adblock-nocoin-list/master/nocoin.txt
   name: NoCoin Filter List
   id: 1595502662
 - enabled: true
@@ -114,7 +114,7 @@ filters:
   name: 乘风 广告过滤规则
   id: 1600600707
 - enabled: true
-  url: https://gitee.com/xinggsf/Adblock-Rule/raw/master/mv.txt
+  url: https://raw.cooluc.com/xinggsf/Adblock-Plus-Rule/master/mv.txt
   name: 乘风 视频广告过滤规则
   id: 1600600708
 - enabled: true
