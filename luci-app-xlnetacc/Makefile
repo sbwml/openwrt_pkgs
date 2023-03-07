@@ -19,30 +19,13 @@ define Package/$(PKG_NAME)
 endef
 
 define Package/$(PKG_NAME)/description
-	LuCI Support for XLNetAcc.
-endef
-
-define Build/Configure
-endef
-
-define Build/Compile
+  LuCI Support for XLNetAcc.
 endef
 
 define Package/$(PKG_NAME)/conffiles
 /etc/config/xlnetacc
 endef
 
-define Build/Prepare
-	chmod +x root/etc/init.d/xlnetacc root/usr/bin/* >/dev/null 2>&1
-endef
-
-define Package/luci-app-xlnetacc/install
-	$(INSTALL_DIR) $(1)/usr/lib/lua/luci
-	cp -pR ./luasrc/* $(1)/usr/lib/lua/luci
-	$(INSTALL_DIR) $(1)/
-	cp -pR ./root/* $(1)/
-	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/i18n
-	po2lmo ./po/zh-cn/xlnetacc.po $(1)/usr/lib/lua/luci/i18n/xlnetacc.zh-cn.lmo
-endef
-
 $(eval $(call BuildPackage,$(PKG_NAME)))
+
+# call BuildPackage - OpenWrt buildroot signature
