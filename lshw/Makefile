@@ -25,7 +25,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/$(PKG_NAME)
   SECTION:=utils
   CATEGORY:=Utilities
-  TITLE:=vlmcsd for OpenWRT
+  TITLE:=lshw
   URL:=http://lshw.ezix.org
   DEPENDS:=+libstdcpp
 endef
