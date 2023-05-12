@@ -33,8 +33,8 @@ define Package/$(PKG_NAME)
 endef
 
 define Package/$(PKG_NAME)/install
-	$(INSTALL_DIR) $(1)/usr/sbin
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/rtl_fm_streamer $(1)/usr/sbin/rtl_fm_streamer
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/rtl_fm_streamer $(1)/usr/bin/rtl_fm_streamer
 endef
 
 $(eval $(call BuildPackage,$(PKG_NAME)))
