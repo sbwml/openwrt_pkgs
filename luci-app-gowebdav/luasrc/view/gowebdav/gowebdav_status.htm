@@ -4,7 +4,7 @@ XHR.poll(1, '<%=url([[admin]], [[nas]], [[gowebdav]], [[status]])%>', null,
 		var tb = document.getElementById('gowebdav_status');
 		if (data && tb) {
 			if (data.running) {
-				var links = '<em style=\"color:green\"><b>GoWebDav <%:RUNNING%></b></em><input class="cbi-button mar-10" type="button" value="<%:Open Web Interface%>" onclick="openwebui();" />';
+				var links = '<em style=\"color:green\"><b>GoWebDav <%:RUNNING%></b></em><input class="cbi-button cbi-button-reload mar-10" type="button" value="<%:Open Web Interface%>" onclick="openwebui();" />';
 				tb.innerHTML = links;
 			} else {
 				tb.innerHTML = '<em style=\"color:red\"><b>GoWebDav <%:NOT RUNNING%></b></em>';
