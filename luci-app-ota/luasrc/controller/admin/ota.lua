@@ -8,7 +8,6 @@ module("luci.controller.admin.ota",package.seeall)
 
 function index()
   if nixio.fs.access("/rom/bin/ota") then
-    -- entry({"admin", "system", "ota"}, post_on({ apply = "1" }, "action_ota"), _("OTA"), 69)
     entry({"admin", "system", "ota"}, call("action_ota"), _("OTA"), 69)
     entry({"admin", "system", "ota", "check"}, post("action_check"))
     entry({"admin", "system", "ota", "download"}, post("action_download"))
@@ -61,7 +60,7 @@ function action_ota()
   local image_tmp = "/tmp/firmware.img"
   local http = require "luci.http"
   if http.formvalue("apply") == "1" then
-    if not luci.dispatcher.test_post_security() then
+    if http.getenv("REQUEST_METHOD") ~= "POST" then
       return
     end
     if not image_supported(image_tmp) then
@@ -74,7 +73,7 @@ function action_ota()
       msg   = luci.i18n.translate("The system is flashing now.<br /> DO NOT POWER OFF THE DEVICE!<br /> Wait a few minutes before you try to reconnect. It might be necessary to renew the address of your computer to reach the device again, depending on your settings."),
       addr  = (#keep > 0) and "10.0.0.1" or nil
     })
-    fork_exec("sleep 1; killall dropbear uhttpd nginx; sleep 1; /sbin/sysupgrade %s %q" %{ keep, image_tmp })
+    fork_exec("sleep 1; killall dropbear uhttpd nginx; sync; echo 3 > /proc/sys/vm/drop_caches; sleep 1; /sbin/sysupgrade %s %q" %{ keep, image_tmp })
   else
     luci.template.render("admin_system/ota")
   end
