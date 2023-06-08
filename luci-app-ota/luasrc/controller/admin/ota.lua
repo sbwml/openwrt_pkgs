@@ -8,7 +8,8 @@ module("luci.controller.admin.ota",package.seeall)
 
 function index()
   if nixio.fs.access("/rom/bin/ota") then
-    entry({"admin", "system", "ota"}, post_on({ apply = "1" }, "action_ota"), _("OTA"), 69)
+    -- entry({"admin", "system", "ota"}, post_on({ apply = "1" }, "action_ota"), _("OTA"), 69)
+    entry({"admin", "system", "ota"}, call("action_ota"), _("OTA"), 69)
     entry({"admin", "system", "ota", "check"}, post("action_check"))
     entry({"admin", "system", "ota", "download"}, post("action_download"))
     entry({"admin", "system", "ota", "progress"}, call("action_progress"))
