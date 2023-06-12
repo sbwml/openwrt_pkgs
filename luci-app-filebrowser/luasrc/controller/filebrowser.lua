@@ -9,7 +9,7 @@ function index()
 		return
 	end
 
-	local page = entry({"admin", "services", "filebrowser"}, alias("admin", "services", "filebrowser", "settings"), _("File Browser"), 2)
+	local page = entry({"admin", "services", "filebrowser"}, alias("admin", "services", "filebrowser", "settings"), _("File Browser"), 100)
 	page.dependent = true
 	page.acl_depends = { "luci-app-filebrowser" }
 
