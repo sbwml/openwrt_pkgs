@@ -1,8 +1,0 @@
-[engine_section]
-# this is the engine configuration section, where the engines are listed
-devcrypto=devcrypto_section
-
-[devcrypto_section]
-# this is the section where the devcrypto engine commands are used
-CIPHERS=ALL
-DIGESTS=NONE

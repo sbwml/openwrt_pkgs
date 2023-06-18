@@ -5,7 +5,7 @@
 include $(TOPDIR)/rules.mk
 
 LUCI_TITLE:=LuCI for CPU Freq Setting
-LUCI_DEPENDS:=+kmod-cryptodev +irqbalance +luci-compat @(arm||aarch64)
+LUCI_DEPENDS:=+irqbalance +luci-compat @(arm||aarch64)
 
 PKG_NAME:=luci-app-cpufreq
 PKG_VERSION:=1

@@ -12,7 +12,6 @@ start()
 {
 	config_load "$NAME"
 
-	[ "$(config_get_cpufreq "cryptodev_hw")" -eq 1 ] && ln -sf /etc/ssl/openssl_hw.cnf /etc/ssl/openssl.cnf || ln -sf /etc/ssl/openssl_init.cnf /etc/ssl/openssl.cnf
 	# Multi-Gen LRU
 	if [ -e /sys/kernel/mm/lru_gen/enabled ]; then
 		if [ "$(config_get_cpufreq "mglru_enabled")" -eq 1 ]; then
