@@ -12,6 +12,7 @@ function index()
 	entry({"admin", "system", "cpufreq", "cpufreq"}, cbi("cpufreq/cpufreq"), _("CPU Setting"), 1).leaf = true
 	entry({"admin", "system", "cpufreq", "irqbalance"}, cbi("cpufreq/irqbalance"), _("Irqbalance"), 2).leaf = true
 	entry({"admin", "system", "cpufreq", "cryptodev"}, cbi("cpufreq/cryptodev"), _("Devcrypto Setting"), 3).leaf = true
+	entry({"admin", "system", "cpufreq", "mglru"}, cbi("cpufreq/mglru"), _("Multi-Gen LRU"), 4).leaf = true
 
 	entry({"admin", "system", "cpufreq", "irq_status"}, call("irq_status")).leaf = true
 end

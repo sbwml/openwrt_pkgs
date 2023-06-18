@@ -13,6 +13,15 @@ start()
 	config_load "$NAME"
 
 	[ "$(config_get_cpufreq "cryptodev_hw")" -eq 1 ] && ln -sf /etc/ssl/openssl_hw.cnf /etc/ssl/openssl.cnf || ln -sf /etc/ssl/openssl_init.cnf /etc/ssl/openssl.cnf
+	# Multi-Gen LRU
+	if [ -e /sys/kernel/mm/lru_gen/enabled ]; then
+		if [ "$(config_get_cpufreq "mglru_enabled")" -eq 1 ]; then
+			echo y >/sys/kernel/mm/lru_gen/enabled
+			config_get_cpufreq "mglru_min_ttl_ms" > /sys/kernel/mm/lru_gen/min_ttl_ms
+		else
+			echo n >/sys/kernel/mm/lru_gen/enabled
+		fi
+	fi
 
 	for i in $(find /sys/devices/system/cpu/cpufreq/policy* -maxdepth 0 | grep -Eo '[0-9]+')
 	do

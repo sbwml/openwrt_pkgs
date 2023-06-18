@@ -1,5 +1,13 @@
 #!/bin/sh
 
+# Multi-Gen LRU
+if [ -z $(uci -q get cpufreq.cpufreq.mglru_enabled) ]; then
+	uci -q set cpufreq.cpufreq.mglru_enabled="1"
+	uci -q set cpufreq.cpufreq.mglru_min_ttl_ms="1000"
+	uci -q commit cpufreq
+fi
+
+# Cpufreq
 if [ -z $(uci -q get cpufreq.cpufreq.governor0) ]; then
 
 uci_write_config() {
@@ -94,5 +102,5 @@ uci -q batch <<-EOF >/dev/null
 	commit ucitrack
 EOF
 
-rm -f /tmp/luci-indexcache
+rm -f /tmp/luci-indexcache*
 exit 0
