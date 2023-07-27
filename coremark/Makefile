@@ -63,7 +63,7 @@ define Package/coremark/config
 			Number of threads to run in parallel
 endef
 
-TARGET_CFLAGS += -flto
+TARGET_CFLAGS += -flto -funroll-loops
 
 ifeq ($(CONFIG_COREMARK_OPTIMIZE_O3),y)
 	TARGET_CFLAGS := $(filter-out -O%,$(TARGET_CFLAGS)) -Ofast
