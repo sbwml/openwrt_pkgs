@@ -5,6 +5,6 @@ function index()
 end
 
 function release_ram()
-	luci.sys.call("sync && sysctl -w vm.drop_caches=3")
+	luci.sys.call("sync && sysctl -w vm.drop_caches=3 >/dev/null 2>&1")
 	luci.http.redirect(luci.dispatcher.build_url("admin/status"))
 end
