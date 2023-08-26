@@ -27,7 +27,7 @@ download() {
             rm -f /tmp/firmware.img
         fi
     fi
-    curl -kL -4 --user-agent 'SmartDrive/30902795 CFNetwork/1335.0.3 Darwin/21.6.0' --fail --show-error --connect-timeout 5 --progress-bar -o /tmp/firmware.img.part "$FW_URL" 2>/tmp/firmware.img.progress &
+    curl -kL -4 --fail --show-error --connect-timeout 5 --progress-bar -o /tmp/firmware.img.part "$FW_URL" 2>/tmp/firmware.img.progress &
     echo "$! $PPID" > /var/run/ota/download.pid
     if wait $!; then
         rm -f /var/run/ota/download.pid
