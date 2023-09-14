@@ -97,6 +97,7 @@ do_cancel() {
                     break
                 fi
             done
+            rm -rf /tmp/firmware.img* /var/lock/ota_background.lock /var/lock/ota_api.lock
             echo "" >> /tmp/firmware.img.progress
             echo "Canceled!" >> /tmp/firmware.img.progress
         fi
