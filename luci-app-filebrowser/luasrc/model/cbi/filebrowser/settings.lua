@@ -31,6 +31,7 @@ o.rmempty = false
 o = s:option(Value, "password", translate("Initial password"))
 o.default = "admin"
 o.rmempty = false
+o.password = true
 
 o = s:option(Value, "ssl_cert", translate("SSL cert"))
 o.default = ""
