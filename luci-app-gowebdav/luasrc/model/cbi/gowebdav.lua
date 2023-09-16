@@ -36,6 +36,9 @@ o.rmempty = false
 o = s:option(Flag, "read_only", translate("Read-Only Mode"))
 o.rmempty = false
 
+o = s:option(Flag, "show_hidden", translate("Show Hidden Files"))
+o.rmempty = false
+
 o = s:option(Flag, "allow_wan", translate("Allow Access From Internet"))
 o.rmempty = false
 

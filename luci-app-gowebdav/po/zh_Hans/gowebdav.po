@@ -25,6 +25,9 @@ msgstr "开放目录"
 msgid "Read-Only Mode"
 msgstr "只读模式"
 
+msgid "Show Hidden Files"
+msgstr "显示隐藏文件"
+
 msgid "Download Reg File"
 msgstr "下载注册表文件"
 
