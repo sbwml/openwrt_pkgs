@@ -13,6 +13,7 @@ get_config() {
 	config_get "password" "config" "password"
 	config_get "root_dir" "config" "root_dir" "/mnt"
 	config_get "read_only" "config" "read_only" "0"
+	config_get "show_hidden" "config" "show_hidden" "0"
 	config_get "allow_wan" "config" "allow_wan" "0"
 	config_get "use_https" "config" "use_https" "0"
 	config_get "cert_cer" "config" "cert_cer"
@@ -57,11 +58,12 @@ start_service() {
 
 	{ [ -n "$username" ] && [ -n "$password" ]; } && auth_arg="-user $username -password $password"
 	[ "$read_only" -eq "1" ] && readonly_arg="-read-only"
+	[ "$show_hidden" -eq "1" ] && showhidden_arg="-show-hidden"
 	{ [ "$use_https" -eq "1" ] && [ -e "$cert_cer" ] && [ -e "$cert_key" ]; } && https_arg="-https-mode -https-cert-file $cert_cer -https-key-file $cert_key"
 
 	procd_open_instance gowebdav
 	procd_set_param command $PROG
-	procd_append_param command -dir "$root_dir" -http "$listen_addr:$listen_port" $auth_arg $readonly_arg $https_arg
+	procd_append_param command -dir "$root_dir" -http "$listen_addr:$listen_port" $auth_arg $readonly_arg $showhidden_arg $https_arg
 	procd_set_param stdout 1
 	procd_set_param stderr 1
 	procd_set_param respawn
