@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 PKG_ARCH_filebrowser:=$(ARCH)
 
 PKG_NAME:=filebrowser
-PKG_VERSION:=2.23.0
+PKG_VERSION:=2.25.0
 PKG_RELEASE:=1
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
