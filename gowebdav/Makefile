@@ -10,7 +10,7 @@ PKG_RELEASE:=$(AUTORELEASE)
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://codeload.github.com/sbwml/gowebdav/tar.gz/v$(PKG_VERSION)?
-PKG_HASH:=4b50db8340cf2d918c949416d9d2fb32db00590e1dfca34d7d81462cfbc79eff
+PKG_HASH:=042ff96567153f1d5c93cbfc405b1c1783ee3f31d65d6c887dc28fcf82e6bf87
 
 PKG_MAINTAINER:=Tianling Shen <cnsztl@immortalwrt.org>
 
