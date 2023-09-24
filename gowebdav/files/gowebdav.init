@@ -63,7 +63,7 @@ start_service() {
 
 	procd_open_instance gowebdav
 	procd_set_param command $PROG
-	procd_append_param command -dir "$root_dir" -http "$listen_addr:$listen_port" $auth_arg $readonly_arg $showhidden_arg $https_arg
+	procd_append_param command -dir "$root_dir" -port "$listen_addr:$listen_port" $auth_arg $readonly_arg $showhidden_arg $https_arg
 	procd_set_param stdout 1
 	procd_set_param stderr 1
 	procd_set_param respawn
