@@ -38,6 +38,8 @@ define Package/vlmcsd/install
 	$(INSTALL_BIN) ./files/vlmcsd.ini $(1)/etc/vlmcsd/vlmcsd.ini
 	$(INSTALL_DIR) $(1)/etc/config
 	$(INSTALL_CONF) ./files/vlmcsd.config $(1)/etc/config/vlmcsd
+	$(INSTALL_DIR) $(1)/etc/init.d
+	$(INSTALL_BIN) ./files/vlmcsd.init $(1)/etc/init.d/vlmcsd
 endef
 
 $(eval $(call BuildPackage,vlmcsd))
