@@ -86,7 +86,7 @@ do_progress() {
     [ -f /tmp/firmware.img.part ] && { cat /tmp/firmware.img.progress | tr '\r' '\n' | tail -n1; return 1; }
     tail -1 /tmp/firmware.img.progress | grep -Fq 'Canceled!' && { echo "Canceled"; return 2; }
     grep -v '\r' /tmp/firmware.img.progress >&2
-    return 3
+    return 1
 }
 
 do_cancel() {
