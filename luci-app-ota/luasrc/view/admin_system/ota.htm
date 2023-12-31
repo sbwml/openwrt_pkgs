@@ -163,10 +163,11 @@
 						state_switch("downloading", "downloaded");
 						break;
 					case 1:
-						if (d.msg.startsWith('#')) {
+						// if (d.msg.startsWith('#')) {
+						if (/^[0-9]/.test(d.msg)) {
 							if (!refresh_download_progress_paused)
 								cancel.disabled = undefined;
-							download_progress.innerText = "<%:Downloading%>: "+d.msg.replaceAll(/[# ]/g, '');
+							download_progress.innerText = "<%:Downloading%>: "+d.msg;
 						} else {
 							if (!refresh_download_progress_paused)
 								cancel.disabled = 'disabled';
