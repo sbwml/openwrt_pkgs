@@ -64,7 +64,8 @@ do_check() {
     curl -s "$API" > /var/run/ota/fw.json
     read_json
     if [ "$BUILD_DATE" -lt "$FW_BUILD_DATE" ]; then
-        echo "<h3>Firmware Date:&nbsp;&nbsp;<font color=\"green\">$(date "+%Y-%m-%d %H:%M:%S" -d "@$FW_BUILD_DATE")</font></h3>"
+        echo "<h3>Model Name:&nbsp;&nbsp;<font color=\"green\">$(board_name)</font><br/>Current Version:&nbsp;&nbsp;<font color=\"Orange\">$(date "+%Y-%m-%d %H:%M:%S" -d "@$BUILD_DATE")</font></h3>"
+        echo "<h3>New Version:&nbsp;&nbsp;<font color=\"green\">$(date "+%Y-%m-%d %H:%M:%S" -d "@$FW_BUILD_DATE")</font></h3>"
         return 0
     elif [ "$BUILD_DATE" -ge "$FW_BUILD_DATE" ]; then
         return 1
