@@ -28,7 +28,7 @@ download() {
         fi
     fi
     touch /tmp/firmware.img.progress
-    fw_download_tool "$FW_URL" -o /tmp/firmware.img.part -k -L > /tmp/firmware.img.progress 2>&1 &
+    fw_download_tool "$FW_URL" -o /tmp/firmware.img.part -k -L -4 > /tmp/firmware.img.progress 2>&1 &
     echo "$! $PPID" > /var/run/ota/download.pid
     while true; do
         progress=$(grep -c "100.00%" /tmp/firmware.img.progress)
