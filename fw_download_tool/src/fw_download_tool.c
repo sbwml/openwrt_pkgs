@@ -65,7 +65,7 @@ long parseTimeout(const char *timeoutStr)
     return timeout;
 }
 
-int downloadFile(const char *url, const char *outputPath, const char *userAgent, long timeout, int skipSSL, int followRedirects)
+int downloadFile(const char *url, const char *outputPath, const char *userAgent, long timeout, int skipSSL, int followRedirects, int useIPv4, int useIPv6)
 {
     CURL *curl;
     CURLcode res;
@@ -108,6 +108,15 @@ int downloadFile(const char *url, const char *outputPath, const char *userAgent,
             curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
         }
 
+        if (useIPv4)
+        {
+            curl_easy_setopt(curl, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
+        }
+        else if (useIPv6)
+        {
+            curl_easy_setopt(curl, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V6);
+        }
+
         res = curl_easy_perform(curl);
         if (res != CURLE_OK)
         {
@@ -132,12 +141,14 @@ int main(int argc, char *argv[])
     long timeout = 0;
     int skipSSL = 0;
     int followRedirects = 0;
+    int useIPv4 = 0;
+    int useIPv6 = 0;
 
     int i;
 
     if (argc < 2)
     {
-        fprintf(stderr, "Usage: %s <url> [-o <output_path>] [-u <user_agent>] [-t <timeout>] [-k] [-L]\n", argv[0]);
+        fprintf(stderr, "Usage: %s <url> [-o <output_path>] [-u <user_agent>] [-t <timeout>] [-k] [-L] [-4] [-6]\n", argv[0]);
         return 1;
     }
 
@@ -197,6 +208,14 @@ int main(int argc, char *argv[])
         {
             followRedirects = 1;
         }
+        else if (strcmp(argv[i], "-4") == 0)
+        {
+            useIPv4 = 1;
+        }
+        else if (strcmp(argv[i], "-6") == 0)
+        {
+            useIPv6 = 1;
+        }
         else
         {
             fprintf(stderr, "Invalid arguments.\n");
@@ -209,7 +228,7 @@ int main(int argc, char *argv[])
         outputPath = "/tmp/firmware.img.part";
     }
 
-    int result = downloadFile(url, outputPath, userAgent, timeout, skipSSL, followRedirects);
+    int result = downloadFile(url, outputPath, userAgent, timeout, skipSSL, followRedirects, useIPv4, useIPv6);
     if (result != 0)
     {
         fprintf(stderr, "Download failed.\n");
