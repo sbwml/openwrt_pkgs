@@ -70,7 +70,7 @@ function action_ota()
       msg   = luci.i18n.translate("The system is flashing now.<br /> DO NOT POWER OFF THE DEVICE!<br /> Wait a few minutes before you try to reconnect. It might be necessary to renew the address of your computer to reach the device again, depending on your settings."),
       addr  = (#keep > 0) and "10.0.0.1" or nil
     })
-    fork_exec("sleep 1; killall dropbear uhttpd nginx; sleep 1; /etc/init.d/dockerd stop; sync; echo 3 > /proc/sys/vm/drop_caches; sleep 3; /sbin/sysupgrade %s %q" %{ keep, image_tmp })
+    fork_exec("sleep 1; killall dropbear uhttpd nginx; sleep 1; sync; /sbin/sysupgrade %s %q" %{ keep, image_tmp })
   else
     luci.template.render("admin_system/ota")
   end
