@@ -1,0 +1,12 @@
+#!/bin/sh
+
+SPEEDTEST_CLI='/usr/bin/speedtest'
+SPEEDTEST_RESULT='/var/speedtest_result'
+
+command="$SPEEDTEST_CLI --accept-gdpr --accept-license --progress=no"
+
+[ -n "$(pgrep -f "$command")" ] && return 1
+
+echo "Testing" > "$SPEEDTEST_RESULT"
+result=$($command | grep 'www.speedtest.net/result/' | awk '{print $3}')
+[ -n "$result" ] && echo "$result" > "$SPEEDTEST_RESULT" || echo "Test failed" > "$SPEEDTEST_RESULT"

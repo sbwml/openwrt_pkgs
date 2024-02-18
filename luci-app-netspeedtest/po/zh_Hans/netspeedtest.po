@@ -1,0 +1,47 @@
+msgid "iPerf3 Server"
+msgstr "iPerf3 服务器"
+
+msgid "iPerf3 Bandwidth Performance Test"
+msgstr "iPerf3 带宽性能测试"
+
+msgid "iPerf3 Common commands reference"
+msgstr "iPerf3 常用命令参考"
+
+msgid "iPerf3 is a tool for active measurements of the maximum achievable bandwidth on IP networks."
+msgstr "iPerf3 是一种主动测量 IP 网络最大可达带宽的工具。"
+
+msgid "Collecting data ..."
+msgstr "正在收集数据..."
+
+msgid "NOT RUNNING"
+msgstr "未运行"
+
+msgid "RUNNING"
+msgstr "运行中"
+
+msgid "Enable"
+msgstr "启用"
+
+msgid "No result."
+msgstr "无结果."
+
+msgid "Ookla SpeedTest"
+msgstr ""
+
+msgid "Speedtest by Ookla"
+msgstr ""
+
+msgid "Speedtest CLI"
+msgstr ""
+
+msgid "SpeedTest"
+msgstr "网速测试"
+
+msgid "Start Test"
+msgstr "启动测试"
+
+msgid "Test failed."
+msgstr "测试失败."
+
+msgid "Testing in progress..."
+msgstr "测试进行中..."
