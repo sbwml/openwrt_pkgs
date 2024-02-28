@@ -23,7 +23,7 @@ if [ -n "$LOCAL_IP" ]; then
 	if [ "$status" = 0 ]; then
 		lon=$(echo $INFO | jsonfilter -e "@['content']['point']['x']")
 		lat=$(echo $INFO | jsonfilter -e "@['content']['point']['y']")
-		server_id=$(curl -sk "https://www.speedtest.net/api/ios-config.php?lon=$lon&lat=$lat" | grep "server url" | head -n1 | sed 's/.*id="//;s/".*//')
+		server_id=$(curl -sk --connect-timeout 3 "https://www.speedtest.net/api/ios-config.php?lon=$lon&lat=$lat" | grep "server url" | head -n1 | sed 's/.*id="//;s/".*//')
 		ARG="-s $server_id"
 	fi
 fi
