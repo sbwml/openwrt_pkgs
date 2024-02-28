@@ -6,7 +6,7 @@ export HOME='/etc/speedtest'
 SPEEDTEST_CLI='/usr/bin/speedtest'
 SPEEDTEST_RESULT='/etc/speedtest/speedtest_result'
 
-[ -n "$(pgrep -f "$SPEEDTEST_CLI")" ] && return 1
+[ -n "$(pgrep -f "/usr/lib/netspeedtest/speedtest")" ] && return 1
 
 LOCAL_IP=$(curl -s -4 --connect-timeout 3 http://ip.3322.net)
 
