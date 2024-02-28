@@ -34,8 +34,20 @@ msgstr ""
 msgid "Speedtest CLI"
 msgstr ""
 
+msgid "Speedtest® CLI"
+msgstr ""
+
+msgid "Installed"
+msgstr "已安装"
+
+msgid "Not Installed"
+msgstr "未安装"
+
 msgid "SpeedTest"
 msgstr "网速测试"
+
+msgid "Internet Speedtest"
+msgstr "互联网测速"
 
 msgid "Start Test"
 msgstr "启动测试"

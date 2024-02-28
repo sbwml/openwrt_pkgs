@@ -19,8 +19,8 @@
     }
   },
   "admin/network/netspeedtest/speedtest": {
-    "title": "Ookla SpeedTest",
-    "order": 4,
+    "title": "Internet Speedtest",
+    "order": 2,
     "action": {
       "type": "view",
       "path": "netspeedtest/speedtest"

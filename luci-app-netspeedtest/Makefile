@@ -8,6 +8,7 @@ LUCI_DEPENDS:=+iperf3 +speedtest-cli +curl +jsonfilter
 
 define Package/$(LUCI_NAME)/conffiles
 /etc/config/netspeedtest
+/etc/speedtest
 endef
 
 include $(TOPDIR)/feeds/luci/luci.mk
