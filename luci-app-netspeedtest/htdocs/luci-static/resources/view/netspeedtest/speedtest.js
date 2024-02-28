@@ -91,7 +91,7 @@ return view.extend({
 			}
 		};
 
-		s = m.section(form.NamedSection, 'config', 'speedtest', 'Internet Speedtest');
+		s = m.section(form.NamedSection, 'config', 'speedtest', _('Internet Speedtest'));
 
 		o = s.option(form.Button, '_start', _('Start Test'));
 		o.inputtitle = _('Start Test');
