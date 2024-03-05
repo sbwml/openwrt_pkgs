@@ -37,6 +37,8 @@ define Build/Prepare
 	$(SED) 's/dhclient/udhcpc -i/g' $(PKG_BUILD_DIR)/myconfig.c
 endef
 
+TARGET_CFLAGS += -Wno-incompatible-pointer-types
+
 define Build/Compile
 	#$(Build/Compile/$(PKG_NAME))
 	$(MAKE) -C $(PKG_BUILD_DIR)/ \
