@@ -50,7 +50,7 @@ define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) -f unix/Makefile generic \
 		prefix="$(PKG_INSTALL_DIR)/usr" \
 		CFLAGS="$(TARGET_CFLAGS)" \
-		CC="$(TARGET_CC) $(TARGET_CFLAGS) -O $(TARGET_CPPFLAGS) -I. -DUNIX $(TARGET_LDFLAGS)" \
+		CC="$(TARGET_CC) $(TARGET_CFLAGS) -O $(TARGET_CPPFLAGS) -I. -DUNIX $(TARGET_LDFLAGS) -Wno-incompatible-pointer-types" \
 		IZ_BZIP2="no" \
 		install
 endef
