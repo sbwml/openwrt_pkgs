@@ -10,7 +10,7 @@ PKG_VERSION:=20231119
 
 LUCI_TITLE:=LuCI Support for natmap
 LUCI_PKGARCH:=all
-LUCI_DEPENDS:=+natmapt +coreutils-timeout
+LUCI_DEPENDS:=+natmapt +stuntman +coreutils-timeout
 
 LUCI_DESCRIPTION:=TCP/UDP port mapping for full cone NAT
 
