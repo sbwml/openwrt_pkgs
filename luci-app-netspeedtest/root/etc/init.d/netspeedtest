@@ -12,7 +12,7 @@ start_service() {
 	get_config
 	[ "$iperf3_enabled" -ne "1" ] && return 1
 	procd_open_instance "iperf3"
-	procd_set_param command "iperf3"
+	procd_set_param command /usr/bin/taskset -c 0-1 /usr/bin/iperf3
 	procd_append_param command -s
 	procd_set_param respawn
 	procd_set_param stdout 0
