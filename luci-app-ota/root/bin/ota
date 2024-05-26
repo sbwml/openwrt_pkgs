@@ -6,6 +6,9 @@
 API=$(uci -q get ota.config.api_url)
 WRLOCK=/var/lock/ota_background.lock
 
+# armsr/armv8
+[ "$OPENWRT_BOARD" = "armsr/armv8" ] && alias board_name="echo armsr,armv8"
+
 # x86_64
 [ $(uname -m) = "x86_64" ] && alias board_name="echo x86_64"
 
