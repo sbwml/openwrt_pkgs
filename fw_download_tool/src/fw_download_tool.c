@@ -137,7 +137,7 @@ int main(int argc, char *argv[])
 {
     const char *url;
     const char *outputPath = NULL;
-    const char *userAgent = "SmartDrive/35698400 CFNetwork/1335.0.3 Darwin/21.6.0";
+    const char *userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
     long timeout = 0;
     int skipSSL = 0;
     int followRedirects = 0;
