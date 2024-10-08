@@ -9,11 +9,8 @@ LUCI_DEPENDS:=+zerotier +jsonfilter +ucode
 LUCI_PKGARCH:=all
 
 PKG_NAME:=luci-app-zerotier
+PKG_VERSION:=1.0.0
 PKG_RELEASE:=1
-
-define Package/$(PKG_NAME)/conffiles
-/etc/zerotier
-endef
 
 include $(TOPDIR)/feeds/luci/luci.mk
 
