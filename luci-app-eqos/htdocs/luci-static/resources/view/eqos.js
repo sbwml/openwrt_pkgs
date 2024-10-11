@@ -16,7 +16,7 @@ return view.extend({
 		var m, s, o;
 
 		m = new form.Map('eqos', _('EQoS'),
-			_('Network speed control service.'));
+			_('Network speed control service. Not compatible with Software flow offloading.'));
 
 		s = m.section(form.NamedSection, 'config', 'eqos');
 
