@@ -76,7 +76,11 @@ case "$DISTRIB_TARGET" in
 			uci_write_config 4 schedutil 600000 2208000
 		elif echo "$CPU_FREQS" | grep -q "1992000"; then
 			# RK3568
-			uci_write_config 0 schedutil 600000 1992000
+			if [ "$(uname -r | awk -F '[.-]' '{print $1"."$2}')" = "6.12" ] && echo "$CPU_FREQS" | grep -q "2208000"; then
+				uci_write_config 0 schedutil 600000 2208000
+			else
+				uci_write_config 0 schedutil 600000 1992000
+			fi
 		else
 			# RK3328
 			uci_write_config 0 schedutil 816000 1608000
