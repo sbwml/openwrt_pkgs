@@ -11,7 +11,7 @@ function index()
 
 	local page = entry({"admin", "services", "filebrowser"}, alias("admin", "services", "filebrowser", "settings"), _("File Browser"), 100)
 	page.dependent = true
-	page.acl_depends = { "luci-app-filebrowser" }
+	page.acl_depends = { "luci-app-filebrowser-go" }
 
 	entry({"admin", "services", "filebrowser", "settings"}, cbi("filebrowser/settings"), _("Settings"), 1).leaf = true
 	entry({"admin", "services", "filebrowser", "log"}, cbi("filebrowser/log"), _("Log"), 2).leaf = true

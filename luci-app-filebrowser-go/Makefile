@@ -7,7 +7,7 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=luci-app-filebrowser
+PKG_NAME:=luci-app-filebrowser-go
 PKG_VERSION:=1.1
 PKG_RELEASE:=2
 
