@@ -28,6 +28,8 @@ define Package/vlmcsd/description
   vlmcsd is a KMS Emulator in C.
 endef
 
+TARGET_CC:= $(filter-out ccache,$(TARGET_CC))
+
 MAKE_FLAGS += \
 	-C $(PKG_BUILD_DIR)
 
