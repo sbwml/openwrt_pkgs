@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=coremark
-PKG_VERSION:=2023.01.25~d5fad6bd-r1
+PKG_VERSION:=2023.01.25~d5fad6bd
 PKG_RELEASE:=1
 
 ifeq ($(CONFIG_USE_MUSL),y)
