@@ -34,6 +34,36 @@ msgstr "CPU 切换频率触发阈值"
 msgid "Kernel make a decision on whether it should increase the frequency (%)"
 msgstr "当 CPU 占用率超过 (%) 的情况下触发内核切换频率"
 
+msgid "PWM Fan Controller"
+msgstr "PWM 风扇控制"
+
+msgid "Smart control PWM fan start/stop and fan speed based on CPU temperature."
+msgstr "通过 CPU 温度值智能控制 PWM 风扇启停、转速。"
+
+msgid "Fan temperature activation (°C)"
+msgstr "风扇启停温度 (°C)"
+
+msgid "Fan always on"
+msgstr "风扇常转"
+
+msgid "Fan speed"
+msgstr "风扇转速"
+
+msgid "Auto"
+msgstr "自动"
+
+msgid "Level 1"
+msgstr "等级 1"
+
+msgid "Level 2"
+msgstr "等级 2"
+
+msgid "Level 3"
+msgstr "等级 3"
+
+msgid "Level 4"
+msgstr "等级 4"
+
 msgid "Irqbalance"
 msgstr "中断均衡器"
 

@@ -10,8 +10,9 @@ function index()
 	page.acl_depends = { "luci-app-cpufreq" }
 
 	entry({"admin", "system", "cpufreq", "cpufreq"}, cbi("cpufreq/cpufreq"), _("CPU Setting"), 1).leaf = true
-	entry({"admin", "system", "cpufreq", "irqbalance"}, cbi("cpufreq/irqbalance"), _("Irqbalance"), 2).leaf = true
-	entry({"admin", "system", "cpufreq", "mglru"}, cbi("cpufreq/mglru"), _("Multi-Gen LRU"), 3).leaf = true
+	entry({"admin", "system", "cpufreq", "pwmfan"}, cbi("cpufreq/pwmfan"), _("PWM Fan Controller"), 2).leaf = true
+	entry({"admin", "system", "cpufreq", "irqbalance"}, cbi("cpufreq/irqbalance"), _("Irqbalance"), 3).leaf = true
+	entry({"admin", "system", "cpufreq", "mglru"}, cbi("cpufreq/mglru"), _("Multi-Gen LRU"), 4).leaf = true
 
 	entry({"admin", "system", "cpufreq", "irq_status"}, call("irq_status")).leaf = true
 end

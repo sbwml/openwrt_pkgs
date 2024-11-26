@@ -5,11 +5,11 @@
 include $(TOPDIR)/rules.mk
 
 LUCI_TITLE:=LuCI for CPU Freq Setting
-LUCI_DEPENDS:=+irqbalance +luci-compat @(arm||aarch64)
+LUCI_DEPENDS:=@(arm||aarch64) +irqbalance +luci-compat +kmod-hwmon-pwmfan
 
 PKG_NAME:=luci-app-cpufreq
-PKG_VERSION:=1
-PKG_RELEASE:=$(COMMITCOUNT)
+PKG_VERSION:=1.1
+PKG_RELEASE:=1
 
 define Package/$(PKG_NAME)/conffiles
 /etc/config/cpufreq
