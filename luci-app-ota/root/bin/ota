@@ -67,7 +67,7 @@ do_check() {
     [ $url_check -ne 200 ] && exit 255
     curl -s "$API" > /var/run/ota/fw.json
     read_json
-    NEW_VERSION=$(basename $FW_URL | awk -F- '{print $2}')
+    NEW_VERSION=$(basename $FW_URL | awk -F- '{if (NF >= 3 && $3 ~ /^rc/) {print $2 "-" $3} else {print $2}}')
     if [ "$BUILD_DATE" -lt "$FW_BUILD_DATE" ]; then
         echo "<h3>Model:&nbsp;&nbsp;<font color=\"green\">$(board_name)</font><br/>Current Version:&nbsp;&nbsp;<font color=\"green\">$PRETTY_NAME</font><br/>Build Date:&nbsp;&nbsp;<font color=\"Orange\">$(date "+%Y-%m-%d %H:%M:%S" -d "@$BUILD_DATE")</font></h3>"
         echo "<h3>New Version:&nbsp;&nbsp;<font color=\"green\">OpenWrt $NEW_VERSION</font><br/>Build Date:&nbsp;&nbsp;<font color=\"green\">$(date "+%Y-%m-%d %H:%M:%S" -d "@$FW_BUILD_DATE")</font></h3>"
