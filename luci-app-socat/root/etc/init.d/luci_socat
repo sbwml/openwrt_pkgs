@@ -75,6 +75,12 @@ stop_service() {
 }
 
 start() {
+	[ -f "/etc/config/socat" ] && [ $(grep -c global /etc/config/socat) -eq 0 ] && {
+		uci add socat global
+		uci rename socat.@global[0]='global'
+		uci set socat.global.enable="$(grep -q "enable '1'" /etc/config/socat && echo '1' || echo '0')"
+		uci commit socat
+	}
 	enable=$(uci -q get $CONFIG.@global[0].enable)
 	if [ "$enable" = "0" ];then
 		stop_service
