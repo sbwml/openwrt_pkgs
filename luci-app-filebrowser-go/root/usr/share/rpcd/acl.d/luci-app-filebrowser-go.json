@@ -1,5 +1,5 @@
 {
-	"luci-app-filebrowser": {
+	"luci-app-filebrowser-go": {
 		"description": "Grant UCI access for luci-app-filebrowser",
 		"read": {
 			"uci": [ "filebrowser" ]
