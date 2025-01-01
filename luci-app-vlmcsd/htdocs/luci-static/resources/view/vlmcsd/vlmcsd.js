@@ -66,6 +66,10 @@ return view.extend({
 		o.default = o.disabled;
 		o.rmempty = false;
 
+		o = s.option(form.Flag, 'firewall', _('Open firewall port'));
+		o.default = o.disabled;
+		o.rmempty = false;
+
 		return m.render();
 	}
 });

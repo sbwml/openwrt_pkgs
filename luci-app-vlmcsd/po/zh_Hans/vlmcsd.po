@@ -35,5 +35,8 @@ msgstr "启用"
 msgid "Auto activate"
 msgstr "自动激活局域网客户端"
 
+msgid "Open firewall port"
+msgstr "打开防火墙端口"
+
 msgid "This file is /etc/vlmcsd/vlmcsd.ini."
 msgstr "这个文件在 /etc/vlmcsd/vlmcsd.ini 下，可以增加新的产品主密钥。"
