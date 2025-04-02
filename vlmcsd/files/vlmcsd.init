@@ -33,7 +33,7 @@ set_firewall() {
 		uci set firewall.vlmcsd=rule
 		uci set firewall.vlmcsd.name="vlmcsd"
 		uci set firewall.vlmcsd.target="ACCEPT"
-		uci set firewall.vlmcsd.src="wan"
+		uci set firewall.vlmcsd.src="*"
 		uci set firewall.vlmcsd.proto="tcp"
 		uci set firewall.vlmcsd.dest_port="1688"
 		uci set firewall.vlmcsd.enabled="1"
@@ -58,8 +58,9 @@ start_service() {
 	procd_open_instance vlmcsd
 	procd_set_param command $PROG
 	procd_append_param command -D
-	procd_append_param command -i /etc/vlmcsd/vlmcsd.ini
-	procd_append_param command -L [::]:1688
+	procd_append_param command -i "/etc/vlmcsd/vlmcsd.ini"
+	procd_append_param command -L "0.0.0.0:1688"
+	procd_append_param command -L "[::]:1688"
 	procd_set_param stdout 1
 	procd_set_param stderr 1
 	procd_set_param respawn
