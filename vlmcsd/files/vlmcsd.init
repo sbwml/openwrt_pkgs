@@ -24,8 +24,7 @@ add_vlmcs_entry() {
 		commit dhcp
 	EOF
 
-	/etc/init.d/dnsmasq restart
-	exit 0
+	/etc/init.d/dnsmasq reload
 }
 
 set_firewall() {
@@ -80,6 +79,14 @@ start_service() {
 			uci delete dhcp.@srvhost[$index]
 			add_vlmcs_entry $HOSTNAME
 		fi
+	else
+		uci -q show dhcp | grep 'srvhost\[[0-9]\].srv.*vlmcs' && {
+			index=$(uci -q show dhcp |grep "].srv='_vlmcs._tcp'")
+			index=${index#*[}
+			index=${index%]*}
+			uci delete dhcp.@srvhost[$index]
+			/etc/init.d/dnsmasq reload
+		}
 	fi
 }
 
