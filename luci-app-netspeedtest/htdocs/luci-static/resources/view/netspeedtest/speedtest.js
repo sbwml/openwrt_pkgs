@@ -7,12 +7,15 @@
 'require uci';
 'require ui';
 'require form';
-'require tools.widgets as widgets';
 'require request';
 
 var TestTimeout = 240 * 1000; // 4 Minutes
 
 return view.extend({
+	handleSaveApply: null,
+	handleSave: null,
+	handleReset: null,
+
 	load: function () {
 		return Promise.all([
 			L.resolveDefault(fs.stat('/usr/bin/speedtest'), {}),
