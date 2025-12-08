@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luci-app-diskman
-PKG_VERSION:=v0.2.13
+PKG_VERSION:=0.2.13
 PKG_RELEASE:=2
 
 PKG_MAINTAINER:=lisaac <lisaac.cn@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=AGPL-3.0
 
 LUCI_TITLE:=Disk Manager interface for LuCI
 
-LUCI_DEPENDS:=+e2fsprogs +parted +smartmontools +blkid +swap-utils \
+LUCI_DEPENDS:=+luci-compat +e2fsprogs +parted +smartmontools +blkid +swap-utils +xfs-mkfs \
 	+PACKAGE_$(PKG_NAME)_INCLUDE_btrfs_progs:btrfs-progs \
 	+PACKAGE_$(PKG_NAME)_INCLUDE_lsblk:lsblk \
 	+PACKAGE_$(PKG_NAME)_INCLUDE_mdadm:mdadm \
