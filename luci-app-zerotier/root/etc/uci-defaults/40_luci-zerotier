@@ -1,21 +1,12 @@
 #!/bin/sh
 
-[ -f "/etc/config/ucitrack" ] && {
 uci -q batch <<-EOF >/dev/null
 	delete ucitrack.@zerotier[-1]
-	add ucitrack zerotier
-	set ucitrack.@zerotier[-1].init=zerotier
 	commit ucitrack
+
+	delete firewall.zerotier
+	commit firewall
 EOF
-}
 
-if [ "$(grep -c sample_config /etc/config/zerotier)" = 0  ]; then
-cat >> /etc/config/zerotier <<"EOF"
-config zerotier 'sample_config'
-	option enabled '0'
-EOF
-fi
-
-rm -rf /tmp/luci-*
-
+rm -f /tmp/luci-indexcache
 exit 0
