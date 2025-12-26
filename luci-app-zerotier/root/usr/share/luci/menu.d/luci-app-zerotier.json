@@ -1,7 +1,7 @@
 {
 	"admin/services/zerotier": {
 		"title": "ZeroTier",
-		"order": 90,
+		"order": 1050,
 		"action": {
 			"type": "firstchild"
 		},
