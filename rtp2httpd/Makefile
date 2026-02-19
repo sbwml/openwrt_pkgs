@@ -2,7 +2,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=rtp2httpd
 
-PKG_VERSION:=3.6.2
+PKG_VERSION:=3.9.0
 PKG_RELEASE:=1
 PKG_MAINTAINER:=Stackie Jia <jsq2627@gmail.com>
 PKG_LICENSE:=GPL-2.0-or-later
@@ -12,14 +12,14 @@ PKG_FIXUP:=autoreconf
 
 PKG_SOURCE:=rtp2httpd-v$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://codeload.github.com/stackia/rtp2httpd/tar.gz/v$(PKG_VERSION)?
-PKG_HASH:=73868e57a7bb5a1a4be1cfbb1055106545e6d9e7e6975547bd9f8f745a21a961
+PKG_HASH:=ded99d8623133308ab4bf760f930d39d0c3fd03647ed46529aeb2333b56a9983
 
 include $(INCLUDE_DIR)/package.mk
 
 define Package/rtp2httpd
 	SECTION:=net
 	CATEGORY:=Network
-	TITLE:=Convert RTP/UDP/RTSP streams into HTTP streams with FCC support
+	TITLE:=Multicast RTP/RTSP to Unicast HTTP stream converter, optimized for China IPTV
 	URL:=https://github.com/stackia/rtp2httpd
 endef
 
@@ -31,13 +31,12 @@ define Package/rtp2httpd/description
 	incoming RTP data to HTTP stream.
 endef
 
-CONFIGURE_VARS += \
-	RELEASE_VERSION="$(PKG_VERSION)"
-
 define Package/rtp2httpd/conffiles
 /etc/config/rtp2httpd
 /etc/rtp2httpd.conf
 endef
+
+export RELEASE_VERSION=$(PKG_VERSION)
 
 define Package/rtp2httpd/install
 	$(INSTALL_DIR) $(1)/etc/init.d $(1)/etc/config $(1)/usr/bin

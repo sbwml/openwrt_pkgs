@@ -316,6 +316,19 @@ return view.extend({
 
     o = s.taboption(
       "network",
+      widgets.DeviceSelect,
+      "upstream_interface_http",
+      _("Upstream HTTP Proxy Interface"),
+      _(
+        "Interface to use for HTTP proxy upstream requests (default: use routing table)"
+      )
+    );
+    o.noaliases = true;
+    o.datatype = "interface";
+    o.depends({ use_config_file: "0", advanced_interface_settings: "1" });
+
+    o = s.taboption(
+      "network",
       form.Value,
       "maxclients",
       _("Max clients allowed")
@@ -353,6 +366,19 @@ return view.extend({
     o = s.taboption(
       "network",
       form.Value,
+      "udp_rcvbuf_size",
+      _("UDP Receive Buffer Size"),
+      _(
+        "UDP socket receive buffer size in bytes. Applies to multicast, FCC, and RTSP sockets. Default is 524288 (512KB). For 4K IPTV streams at ~30 Mbps, 512KB provides ~140ms of buffering. Increase to reduce packet loss. Note: actual size may be limited by kernel parameter net.core.rmem_max."
+      )
+    );
+    o.datatype = "range(65536, 16777216)";
+    o.placeholder = "524288";
+    o.depends("use_config_file", "0");
+
+    o = s.taboption(
+      "network",
+      form.Value,
       "mcast_rejoin_interval",
       _("Multicast Rejoin Interval"),
       _(
@@ -385,6 +411,18 @@ return view.extend({
       )
     );
     o.default = "0";
+    o.depends("use_config_file", "0");
+
+    o = s.taboption(
+      "network",
+      form.Value,
+      "rtsp_stun_server",
+      _("RTSP STUN Server"),
+      _(
+        "When RTSP server only supports UDP transport and client is behind NAT, try using STUN for NAT traversal (may not always succeed). Format: host:port or host (default port 3478). Example: stun.miwifi.com"
+      )
+    );
+    o.placeholder = "stun.miwifi.com";
     o.depends("use_config_file", "0");
 
     // ===== TAB 3: Player & M3U =====
