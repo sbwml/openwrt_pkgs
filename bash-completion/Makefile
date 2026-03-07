@@ -1,12 +1,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=bash-completion
-PKG_VERSION:=2.14.0
+PKG_VERSION:=2.17.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=https://github.com/scop/bash-completion/releases/download/$(PKG_VERSION)
-PKG_HASH:=5c7494f968280832d6adb5aa19f745a56f1a79df311e59338c5efa6f7285e168
+PKG_HASH:=dd9d825e496435fb3beba3ae7bea9f77e821e894667d07431d1d4c8c570b9e58
 
 PKG_MAINTAINER:=sbwml <admin@cooluc.com>
 PKG_LICENSE:=GPL-2.0
