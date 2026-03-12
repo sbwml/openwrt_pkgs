@@ -1,0 +1,10 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -290,7 +290,6 @@ depend:
+ $(PKG_LIB_FILE): $(PKG_OBJECTS)
+ 	-rm -f $(PKG_LIB_FILE)
+ 	${MAKE_LIB}
+-	$(RANLIB) $(PKG_LIB_FILE)
+ 
+ $(PKG_STUB_LIB_FILE): $(PKG_STUB_OBJECTS)
+ 	-rm -f $(PKG_STUB_LIB_FILE)
