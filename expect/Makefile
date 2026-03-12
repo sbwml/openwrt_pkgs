@@ -25,7 +25,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/expect
   SECTION:=utils
   CATEGORY:=Utilities
-  DEPENDS:=+tcl
+  DEPENDS:=+tcl +coreutils-stty
   TITLE:=A Tool for Automating Interactive Programs
   URL:=https://expect.sourceforge.net
 endef
@@ -38,8 +38,27 @@ define Package/expect/description
 endef
 
 define Package/expect/install
-	$(INSTALL_DIR) $(1)/usr/bin $(1)/usr/lib
+	$(INSTALL_DIR) $(1)/usr/bin
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/expect $(1)/usr/bin
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/example/autoexpect $(1)/usr/bin
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/example/dislocate $(1)/usr/bin
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/example/ftp-rfc $(1)/usr/bin
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/example/kibitz $(1)/usr/bin
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/example/lpunlock $(1)/usr/bin
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/example/mkpasswd $(1)/usr/bin/mkpasswd-expect
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/example/passmass $(1)/usr/bin
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/example/rftp $(1)/usr/bin
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/example/rlogin-cwd $(1)/usr/bin
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/example/timed-read $(1)/usr/bin
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/example/timed-run $(1)/usr/bin
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/example/unbuffer $(1)/usr/bin
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/example/weather $(1)/usr/bin
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/example/xkibitz $(1)/usr/bin
+
+	$(INSTALL_DIR) $(1)/usr/lib/tcl8.6/expect$(PKG_VERSION)
+	$(INSTALL_DATA) $(PKG_BUILD_DIR)/pkgIndex.tcl $(1)/usr/lib/tcl8.6/expect$(PKG_VERSION)
+
+	$(INSTALL_DIR) $(1)/usr/lib
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/libexpect$(PKG_VERSION).so $(1)/usr/lib
 endef
 
