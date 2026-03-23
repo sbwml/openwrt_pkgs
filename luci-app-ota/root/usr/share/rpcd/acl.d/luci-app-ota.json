@@ -1,0 +1,17 @@
+{
+	"luci-app-ota": {
+		"description": "Grant access to OTA functionality",
+		"read": {
+			"ubus": {
+				"luci.ota": [ "check", "progress" ]
+			},
+			"uci": [ "ota" ]
+		},
+		"write": {
+			"ubus": {
+				"luci.ota": [ "download", "cancel", "apply" ]
+			},
+			"uci": [ "ota" ]
+		}
+	}
+}
