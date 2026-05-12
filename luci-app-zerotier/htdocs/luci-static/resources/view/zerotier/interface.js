@@ -7,18 +7,19 @@
 'require fs';
 'require ui';
 'require view';
+'require poll';
+'require dom';
 
 return view.extend({
-	load: function() {
+	fetchData: function() {
 		return fs.exec('/sbin/ifconfig').then(function(res) {
 			if (res.code !== 0 || !res.stdout || res.stdout.trim() === '') {
-				ui.addNotification(null, E('p', {}, _('Unable to get interface info: %s.').format(res.message)));
-				return '';
+				return [];
 			}
 
 			var interfaces = res.stdout.match(/zt[a-z0-9]+/g);
 			if (!interfaces || interfaces.length === 0)
-				return 'No interface online.';
+				return [];
 
 			var promises = interfaces.map(function(name) {
 				return fs.exec('/sbin/ifconfig', [name]);
@@ -27,7 +28,6 @@ return view.extend({
 			return Promise.all(promises).then(function(results) {
 				var data = results.map(function(res, index) {
 					if (res.code !== 0 || !res.stdout || res.stdout.trim() === '') {
-						ui.addNotification(null, E('p', {}, _('Unable to get interface %s info: %s.').format(interfaces[index], res.message)));
 						return null;
 					}
 					return {
@@ -39,7 +39,13 @@ return view.extend({
 				return data.map(function(info) {
 					var lines = info.stdout.split('\n');
 					var parsedInfo = {
-						name: info.name
+						name: info.name,
+						mac: '-',
+						ipv4: '-',
+						ipv6: '-',
+						mtu: '-',
+						rxBytes: '-',
+						txBytes: '-'
 					};
 
 					lines.forEach(function(line) {
@@ -69,14 +75,20 @@ return view.extend({
 		});
 	},
 
-	render: function(data) {
-		var title = E('h2', {class: 'content'}, _('ZeroTier'));
-		var desc = E('div', {class: 'cbi-map-descr'}, _('ZeroTier is an open source, cross-platform and easy to use virtual LAN.'));
+	load: function() {
+		return this.fetchData();
+	},
 
-		if (!Array.isArray(data)) {
-			return E('div', {}, [title, desc, E('div', {}, _('No interface online.'))]);
+	renderRows: function(data) {
+		if (!Array.isArray(data) || data.length === 0) {
+			return [
+				E('tr', { class: 'tr' }, [
+					E('td', { class: 'td', colspan: '2' }, _('No interface online.'))
+				])
+			];
 		}
-		var rows = data.flatMap(function(interfaceData) {
+
+		return data.flatMap(function(interfaceData) {
 			return [
 				E('th', {class: 'th', colspan: '2'}, _('Network Interface Information')),
 				E('tr', {class: 'tr'}, [
@@ -109,8 +121,21 @@ return view.extend({
 				])
 			];
 		});
+	},
 
-		return E('div', {}, [title, desc, E('table', { 'class': 'table' }, rows)]);
+	render: function(data) {
+		var title = E('h2', {class: 'content'}, _('ZeroTier'));
+		var desc = E('div', {class: 'cbi-map-descr'}, _('ZeroTier is an open source, cross-platform and easy to use virtual LAN.'));
+
+		var table = E('table', { 'class': 'table', 'id': 'zt_status_table' }, this.renderRows(data));
+
+		poll.add(L.bind(function() {
+			return this.fetchData().then(L.bind(function(newData) {
+				dom.content(document.getElementById('zt_status_table'), this.renderRows(newData));
+			}, this));
+		}, this));
+
+		return E('div', {}, [title, desc, table]);
 	},
 
 	handleSaveApply: null,
